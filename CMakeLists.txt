@@ -53,8 +53,9 @@ include (umbrella-init)
 project (mochi-umbrella C CXX)
 
 #
-# pull in the main routines
+# configure umbrella for MPI and pull in the main routines
 #
+set (UMBRELLA_MPI 1)
 include (umbrella-main)
 
 #
