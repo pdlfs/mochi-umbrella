@@ -1,0 +1,26 @@
+diff --git a/Makefile b/Makefile
+index 7f2417d..6736791 100644
+--- a/Makefile
++++ b/Makefile
+@@ -142,7 +142,7 @@ rpm dpkg: pkg-clean source
+ 
+ install uninstall:
+ 	$(MAKE) -C src $@
+-	$(MAKE) -C doc $@
++###	$(MAKE) -C doc $@
+ 
+ .PHONY: all clean clobber test check cstyle check-license install uninstall\
+ 	source rpm dpkg pkg-clean pcheck check-remote format doc $(SUBDIRS)
+diff --git a/utils/md2man.sh b/utils/md2man.sh
+index 3af4773..fa49c76 100755
+--- a/utils/md2man.sh
++++ b/utils/md2man.sh
+@@ -50,7 +50,7 @@
+ #
+ 
+ set -e
+-set -o pipefail
++###set -o pipefail
+ 
+ filename=$1
+ template=$2
