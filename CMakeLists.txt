@@ -67,14 +67,6 @@ umbrella_opt_default (MERCURY_TAG "master")
 umbrella_opt_default (OFI_TAG "master")
 
 #
-# any additional cache variables we want to add that are not already
-# part of the umbrella?
-#
-# XXX: bake bulk isn't public
-umbrella_opt_default (BAKE_BULK_REPO
-                "git@xgitlab.cels.anl.gov:sds/margo.git")
-
-#
 # set other configs before we start pulling in the pieces...
 #
 
@@ -85,19 +77,22 @@ umbrella_opt_default (MERCURY_NA_INITIALLY_ON "bmi;cci;ofi;sm")
 #
 # pull in the parts
 #
+include (umbrella/abt-io)
 include (umbrella/abt-snoozer)
 include (umbrella/argobots)
-include (umbrella/bake-bulk)
+include (umbrella/bake)
 include (umbrella/bmi)
 include (umbrella/cci)
+include (umbrella/hg-bulk-pool)
 include (umbrella/libev)
 include (umbrella/libuuid)
 include (umbrella/margo)
 include (umbrella/mercury)
 include (umbrella/nvml)
 include (umbrella/ofi)
+include (umbrella/ssg)
 
 #
 # targets we don't want by default
 #
-set_property (TARGET bake-bulk PROPERTY EXCLUDE_FROM_ALL True)
+### set_property (TARGET foo PROPERTY EXCLUDE_FROM_ALL True)
