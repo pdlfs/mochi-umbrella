@@ -90,6 +90,9 @@ include (umbrella/margo)
 include (umbrella/mercury)
 include (umbrella/nvml)
 include (umbrella/ofi)
+# has a c11++ problem
+###include (umbrella/sds-keyval)
+include (umbrella/sds-utils)
 include (umbrella/ssg)
 
 #
