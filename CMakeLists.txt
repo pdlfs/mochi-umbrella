@@ -78,13 +78,11 @@ umbrella_opt_default (MERCURY_NA_INITIALLY_ON "bmi;cci;ofi;sm")
 # pull in the parts
 #
 include (umbrella/abt-io)
-include (umbrella/abt-snoozer)
 include (umbrella/argobots)
 include (umbrella/bake)
 include (umbrella/bmi)
 include (umbrella/cci)
 include (umbrella/hg-bulk-pool)
-include (umbrella/libev)
 include (umbrella/libuuid)
 include (umbrella/margo)
 include (umbrella/mercury)
