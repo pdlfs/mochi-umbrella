@@ -15,9 +15,7 @@ if (NOT TARGET argobots)
 #
 # umbrella option variables
 #
-
-umbrella_defineopt (ARGOBOTS_REPO
-     "https://github.com/pmodels/argobots"
+umbrella_defineopt (ARGOBOTS_REPO "https://github.com/pmodels/argobots.git"
      STRING "argobots GIT repository")
 umbrella_defineopt (ARGOBOTS_TAG "master" STRING "argobots GIT tag")
 umbrella_defineopt (ARGOBOTS_TAR "argobots-${ARGOBOTS_TAG}.tar.gz"
