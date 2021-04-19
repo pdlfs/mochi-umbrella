@@ -62,7 +62,6 @@ include (umbrella-main)
 # set git tags to the versions we want to stick to by default...
 #
 umbrella_opt_default (BMI_TAG "master")
-umbrella_opt_default (CCI_TAG "3ab663e0")
 umbrella_opt_default (MERCURY_TAG "master")
 umbrella_opt_default (OFI_TAG "master")
 
@@ -72,7 +71,7 @@ umbrella_opt_default (OFI_TAG "master")
 
 # note: NA_INITIALLY_ON is only applied as the defaults the first time
 # you run cmake.  if you want to reconfigure, change MERCURY_BMI, et al.
-umbrella_opt_default (MERCURY_NA_INITIALLY_ON "bmi;cci;ofi;sm")
+umbrella_opt_default (MERCURY_NA_INITIALLY_ON "bmi;ofi;sm")
 
 #
 # pull in the parts
@@ -82,15 +81,12 @@ include (umbrella/argobots)
 include (umbrella/bake)
 include (umbrella/bmi)
 include (umbrella/cci)
-include (umbrella/hg-bulk-pool)
 include (umbrella/libuuid)
 include (umbrella/margo)
 include (umbrella/mercury)
-include (umbrella/mdcs)
 include (umbrella/nvml)
 include (umbrella/ofi)
 include (umbrella/sds-keyval)
-include (umbrella/sds-utils)
 include (umbrella/ssg)
 
 #
