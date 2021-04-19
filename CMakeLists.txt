@@ -61,7 +61,7 @@ include (umbrella-main)
 #
 # set git tags to the versions we want to stick to by default...
 #
-umbrella_opt_default (BMI_TAG "master")
+umbrella_opt_default (BMI_TAG "main")
 umbrella_opt_default (MERCURY_TAG "master")
 umbrella_opt_default (OFI_TAG "master")
 
@@ -80,7 +80,6 @@ include (umbrella/abt-io)
 include (umbrella/argobots)
 include (umbrella/bake)
 include (umbrella/bmi)
-include (umbrella/cci)
 include (umbrella/libuuid)
 include (umbrella/margo)
 include (umbrella/mercury)
