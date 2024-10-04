@@ -63,7 +63,7 @@ include (umbrella-main)
 #
 umbrella_opt_default (BMI_TAG "main")
 umbrella_opt_default (MERCURY_TAG "master")
-umbrella_opt_default (OFI_TAG "main")
+umbrella_opt_default (OFI_TAG "v1.20.2")
 
 #
 # set other configs before we start pulling in the pieces...
