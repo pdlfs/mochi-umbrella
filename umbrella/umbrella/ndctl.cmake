@@ -17,7 +17,7 @@ if (NOT TARGET ndctl)
 #
 umbrella_defineopt (NDCTL_REPO "https://github.com/pmem/ndctl.git"
                     STRING "NDCTL GIT repository")
-umbrella_defineopt (NDCTL_TAG "master" STRING "NDCTL GIT tag")
+umbrella_defineopt (NDCTL_TAG "main" STRING "NDCTL GIT tag")
 umbrella_defineopt (NDCTL_TAR "ndctl-${NDCTL_TAG}.tar.gz" STRING "NDCTL cache tar file")
 
 #
@@ -31,31 +31,45 @@ umbrella_patchcheck (NDCTL_PATCHCMD ndctl)
 #
 # depends
 #
+include (umbrella/iniparser)
 include (umbrella/json-c)
 include (umbrella/keyutils)
 include (umbrella/kmod)
+include (umbrella/libtraceevent)
+include (umbrella/libtracefs)
 include (umbrella/libuuid)
+
+#
+# XXX: ndctl has been switched to the python-based meson build
+# that requires ninja as a backend.  for now, we need these tools
+# preinstalled.  if they are not there, then we error out.
+#
+find_program(NDCTL_NINJA ninja)
+find_program(NDCTL_MESON meson)
+if (NOT NDCTL_NINJA)
+    message(FATAL_ERROR "ndctl: need an installed ninja (and meson) to build")
+endif()
+if (NOT NDCTL_MESON)
+    message(FATAL_ERROR "ndctl: need an installed meson package to build")
+endif()
 
 #
 # create ndctl target
 #
-ExternalProject_Add (ndctl DEPENDS json-c keyutils kmod libuuid
+ExternalProject_Add (ndctl DEPENDS iniparser json-c keyutils kmod libtraceevent
+                                   libtracefs libuuid
     ${NDCTL_DOWNLOAD} ${NDCTL_PATCHCMD}
-    CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_COMP}
-                      ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
-                      ${UMBRELLA_PKGCFGPATH}
-                      --prefix=${CMAKE_INSTALL_PREFIX}
-                      --disable-docs --without-bash --without-systemd
+    CONFIGURE_COMMAND env ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
+        ${UMBRELLA_PKGCFGPATH}
+        meson setup -Ddocs=disabled -Dsystemd=disabled
+        -Drootprefix=${CMAKE_INSTALL_PREFIX}
+        -Dbashcompletiondir=${CMAKE_INSTALL_PREFIX}/share/bash-completion
+        --prefix=${CMAKE_INSTALL_PREFIX} --libdir=lib --libexecdir=libexec
+        --mandir=share/man --sysconfdir=etc --wrap-mode=nodownload
+        --buildtype=plain --backend=ninja --default-library=shared
+        --cmake-prefix-path=${CMAKE_PREFIX_PATH} <SOURCE_DIR> .
+    BUILD_COMMAND ninja
+    INSTALL_COMMAND ninja install
     UPDATE_COMMAND "")
-
-#
-# add extra autogen prepare step
-#
-ExternalProject_Add_Step (ndctl prepare
-    COMMAND ${UMBRELLA_PREFIX}/ensure-autogen <SOURCE_DIR>/autogen.sh
-    COMMENT "preparing source for configure"
-    DEPENDEES update
-    DEPENDERS configure
-    WORKING_DIRECTORY <SOURCE_DIR>)
 
 endif (NOT TARGET ndctl)
