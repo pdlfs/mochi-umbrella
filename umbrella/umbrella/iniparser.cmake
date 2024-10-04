@@ -19,7 +19,7 @@ umbrella_defineopt (INIPARSER_REPO "https://gitlab.com/iniparser/iniparser.git"
      STRING "iniparser GIT repository")
 umbrella_defineopt (INIPARSER_TAG "main" STRING "iniparser GIT tag")
 umbrella_defineopt (INIPARSER_TAR
-     "INIPARSER-${INIPARSER_TAG}.tar.gz"
+     "iniparser-${INIPARSER_TAG}.tar.gz"
      STRING "iniparser cache tar file")
 
 #
