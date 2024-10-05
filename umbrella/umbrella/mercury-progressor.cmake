@@ -41,7 +41,7 @@ umbrella_testcommand (mercury-progressor MERCURY_PROGRESSOR_TESTCMD
 include (umbrella/mercury)
 
 #
-# create deltafs-nexus target
+# create mercury-progressor target
 #
 ExternalProject_Add (mercury-progressor DEPENDS mercury
     ${MERCURY_PROGRESSOR_DOWNLOAD} ${MERCURY_PROGRESSOR_PATCHCMD}

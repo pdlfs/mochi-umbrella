@@ -34,7 +34,7 @@ umbrella_testcommand (json-c JSON_C_TESTCMD
     TEST_COMMAND "" )
 
 #
-# create deltafs-nexus target
+# create json-c target
 #
 ExternalProject_Add (json-c
     ${JSON_C_DOWNLOAD} ${JSON_C_PATCHCMD}

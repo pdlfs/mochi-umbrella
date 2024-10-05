@@ -40,7 +40,7 @@ umbrella_testcommand (mssg MSSG_TESTCMD
 include (umbrella/mercury)
 
 #
-# create deltafs-nexus target
+# create mssg target
 #
 ExternalProject_Add (mssg DEPENDS mercury
     ${MSSG_DOWNLOAD} ${MSSG_PATCHCMD}

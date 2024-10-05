@@ -33,7 +33,7 @@ umbrella_download (LIBEVENT_DOWNLOAD libevent ${LIBEVENT_TAR}
 umbrella_patchcheck (LIBEVENT_PATCHCMD libevent)
 
 #
-# create deltafs-nexus target
+# create libevent target
 #
 ExternalProject_Add (libevent ${LIBEVENT_DOWNLOAD} ${LIBEVENT_PATCHCMD}
     CMAKE_ARGS -DBUILD_SHARED_LIBS=ON
