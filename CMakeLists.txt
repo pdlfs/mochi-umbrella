@@ -62,6 +62,8 @@ include (umbrella-main)
 # set git tags to the versions we want to stick to by default...
 #
 umbrella_opt_default (BMI_TAG "main")
+# master fmt breaks spdlog ( see spdlog github issue #3202 )
+umbrella_opt_default (FMT_TAG "11.0.2")
 umbrella_opt_default (MERCURY_TAG "master")
 umbrella_opt_default (OFI_TAG "v1.20.2")
 
@@ -83,6 +85,7 @@ include (umbrella/bmi)
 include (umbrella/libuuid)
 include (umbrella/margo)
 include (umbrella/mercury)
+include (umbrella/mofka)
 include (umbrella/ofi)
 include (umbrella/pmdk)
 include (umbrella/sds-keyval)
