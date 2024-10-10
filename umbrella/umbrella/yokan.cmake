@@ -34,13 +34,14 @@ umbrella_patchcheck (YOKAN_PATCHCMD yokan)
 #
 # depends
 #
+include (umbrella/margo)
 include (umbrella/nlohmann-json)
 include (umbrella/tclap)
 
 #
 # create yokan target
 #
-ExternalProject_Add (yokan DEPENDS nlohmann-json tclap
+ExternalProject_Add (yokan DEPENDS margo nlohmann-json tclap
     ${YOKAN_DOWNLOAD} ${YOKAN_PATCHCMD}
     CMAKE_ARGS -DBUILD_SHARED_LIBS=ON
     CMAKE_CACHE_ARGS ${UMBRELLA_CMAKECACHE}
